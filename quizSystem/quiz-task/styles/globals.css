@@ -1,0 +1,121 @@
+html,
+body {
+    padding: 0;
+    margin: 0;
+    font-family: laca, sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+pre .str,
+code .str {
+    color: #dc154a;
+}
+
+.pre {
+    white-space: pre-wrap;
+    white-space: -moz-pre-wrap;
+    white-space: -o-pre-wrap;
+    word-wrap: break-word;
+}
+
+
+/* string  - green */
+
+pre .kwd,
+code .kwd {
+    color: #4e67b6;
+}
+
+
+/* keyword - dark pink */
+
+pre .com,
+code .com {
+    color: #dc154a;
+}
+
+
+/* comment - gray */
+
+pre .typ,
+code .typ {
+    color: #dc154a;
+}
+
+
+/* type - light blue */
+
+pre .lit,
+code .lit {
+    color: #bdb76b;
+}
+
+
+/* literal - blue */
+
+pre .pun,
+code .pun {
+    color: #000;
+}
+
+
+/* punctuation - white */
+
+pre .pln,
+code .pln {
+    color: #bdb76b;
+}
+
+
+/* plaintext - white */
+
+pre .tag,
+code .tag {
+    color: #89bdff;
+}
+
+
+/* html/xml tag    - light blue */
+
+pre .atn,
+code .atn {
+    color: #bdb76b;
+}
+
+
+/* html/xml attribute name  - khaki */
+
+pre .atv,
+code .atv {
+    color: #65B042;
+}
+
+pre .const,
+code .const {
+    color: #65B042;
+}
+
+
+/* html/xml attribute value - green */
+
+pre .dec,
+code .dec {
+    color: #3387CC;
+}
+
+pre.prettyprint {
+    border: none !important;
+}
+
+
+/* decimal - blue */
