@@ -23,15 +23,12 @@
     box-shadow: 0px 1px 4px #fefefe;
     .quizTimeLine {
         background-color: #dc154a;
-        box-shadow: inset 0px 0 0 0 #fefefe;
-        transition: ease-in-out 15s;
+        transition: 0.1s;
         height: 10px;
-        animation-name: animateTimer;
-        animation-duration: 30s;
-        -webkit-transition: ease-in-out 15s;
-        -moz-transition: ease-in-out 15s;
-        -ms-transition: ease-in-out 15s;
-        -o-transition: ease-in-out 15s;
+        -webkit-transition: 0.1s;
+        -moz-transition: 0.1s;
+        -ms-transition: 0.1s;
+        -o-transition: 0.1s;
     }
     .quizTitle {
         font-size: 2.5rem;
