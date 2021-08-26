@@ -1,8 +1,13 @@
-import styles from "../styles/Home.module.scss";
+import styles from "../../styles/Home.module.scss";
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 
 export default function Home() {
+	const [getPoints, setPoints] = useState(0);
+	useEffect(() => {
+		let points = window.location.href.split("/")[4];
+		setPoints(points);
+	}, []);
 	return (
 		<div className={styles.wrapper}>
 			<main className={styles.main}>
@@ -17,9 +22,15 @@ export default function Home() {
 						stiffness: 170
 					}}
 					className={styles.resultContainer}>
-					<h2>YOUR SCORE IS</h2>
-					<h1>3/6</h1>
-					<button>Do it again</button>
+					<main>
+						<div>
+							<h1>SCORE</h1>
+							<h1>{getPoints}/6</h1>
+						</div>
+						<button onClick={(e) => (window.location.href = "/")}>
+							<span>Try Again</span>
+						</button>
+					</main>
 				</motion.div>
 			</main>
 		</div>

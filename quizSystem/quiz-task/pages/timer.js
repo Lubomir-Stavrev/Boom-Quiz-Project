@@ -14,8 +14,6 @@ export default function Timer({ props, onTimeLeft }) {
 	}, []);
 
 	useEffect(() => {
-		console.log(props);
-		console.log(onTimeLeft);
 		setTimeout(() => {
 			setTimerCountValue(0);
 		}, 900);

@@ -1,10 +1,9 @@
 import styles from "../styles/Home.module.scss";
-import { useState, useEffect } from "react";
+import { useState, useEffect, Router } from "react";
 import { motion } from "framer-motion";
 import services from "../utils/services.js";
 import Timer from "./timer.js";
-import prettier from "prettier/standalone";
-import babylon from "prettier/parser-babel";
+import { createBrowserHistory as history } from "history";
 
 export default function Home() {
 	const [getSlideUpValue, setSlideUpValue] = useState("650");
@@ -16,7 +15,6 @@ export default function Home() {
 		async function setDataState() {
 			let data = await services.getQuiz();
 			setQuizData(Object.entries(data));
-			console.log(Object.entries(data));
 		}
 		setDataState();
 	}, []);
@@ -37,6 +35,11 @@ export default function Home() {
 				setTimeout(() => {
 					setSlideUpValue("650px");
 				}, 500);
+
+				if (prev + 1 >= getQuizData.length) {
+					window.location.href = `/results/${currentPoints}`;
+					return;
+				}
 				return prev + 1;
 			});
 		}, 500);
@@ -44,6 +47,10 @@ export default function Home() {
 
 	function handleTimeLeft(e) {
 		setQuestionIndex((prev) => {
+			if (prev + 1 >= getQuizData.length) {
+				window.location.href = `/results/${currentPoints}`;
+				return;
+			}
 			return prev + 1;
 		});
 	}

@@ -96,5 +96,101 @@
     min-height: 350px;
     height: auto;
     background-color: #fefefe;
-    box-shadow: 0px 1px 4px #fefefe;
+    box-shadow: 0px 0 3px 1px #eaeaeb;
+    // Inspired by https://dribbble.com/shots/8582990-VR-Menu-Interaction
+    main {
+        display: flex;
+        flex-direction: column;
+        transform: rotatex(10deg);
+        animation: rotateAngle 6s linear infinite;
+    }
+    button {
+        display: block;
+        position: relative;
+        margin: 0 auto;
+        margin-top: 2rem;
+        cursor: pointer;
+        background: #FFFFFF;
+        border: none;
+        border-radius: .4em;
+        text-transform: uppercase;
+        font-size: 1.4em;
+        font-weight: 500;
+        letter-spacing: 0.04em;
+        perspective: 300px;
+        transform-style: preserve-3d;
+        width: 200px;
+        text-align: center;
+        justify-content: center;
+        &:before,
+        &:after {
+            --z: 0px;
+            position: absolute;
+            top: 0;
+            left: 0;
+            display: block;
+            content: '';
+            width: 0%;
+            height: 100%;
+            opacity: 0;
+            mix-blend-mode: inherit;
+            border-radius: inherit;
+            transform-style: preserve-3d;
+            transform: translate3d( calc(var(--z) * 0px), calc(var(--z) * 0px), calc(var(--z) * 0px));
+        }
+        span {
+            mix-blend-mode: none;
+            display: block;
+        }
+        &:after {
+            background-color: #0c4bfa;
+        }
+        &:before {
+            background-color: #0c4bfa;
+        }
+        &:hover {
+            background-color: #FFFFFF;
+            box-shadow: 0 0 10px 10px #dc154a;
+            transition: background .3s 0.1s;
+            -webkit-transition: background .3s 0.1s;
+            -moz-transition: background .3s 0.1s;
+            -ms-transition: background .3s 0.1s;
+            -o-transition: background .3s 0.1s;
+        }
+        &:hover:before {
+            --z: 0.04;
+            animation: translateWobble 2.2s ease forwards;
+        }
+        &:hover:after {
+            --z: -0.06;
+            animation: translateWobble 2.2s ease forwards;
+        }
+    }
+    @keyframes rotateAngle {
+        0% {
+            transform: rotateY(0deg) rotateX(10deg);
+            animation-timing-function: cubic-bezier(0.61, 1, 0.88, 1);
+        }
+        25% {
+            transform: rotateY(20deg) rotateX(10deg);
+        }
+        50% {
+            transform: rotateY(0deg) rotateX(10deg);
+            animation-timing-function: cubic-bezier(0.61, 1, 0.88, 1);
+        }
+        75% {
+            transform: rotateY(-20deg) rotateX(10deg);
+        }
+        100% {
+            transform: rotateY(0deg) rotateX(10deg);
+        }
+    }
+}
+
+.resultContainer h2 {
+    font-size: 1.8rem;
+}
+
+.resultContainer h1 {
+    font-size: 2.5rem;
 }
