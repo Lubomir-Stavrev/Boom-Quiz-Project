@@ -21,13 +21,6 @@ code .str {
     color: #dc154a;
 }
 
-.pre {
-    white-space: pre-wrap;
-    white-space: -moz-pre-wrap;
-    white-space: -o-pre-wrap;
-    word-wrap: break-word;
-}
-
 
 /* string  - green */
 

@@ -1,25 +1,21 @@
 import styles from "../styles/Home.module.scss";
 import { useState, useEffect } from "react";
-import { func } from "prop-types";
+import { motion } from "framer-motion";
+import services from "../utils/services.js";
+import Timer from "./timer.js";
 
 export default function Home() {
-	const [timerCountValue, setTimerCountValue] = useState(0);
+	const [getSlideUpValue, setSlideUpValue] = useState("350");
+	const [getQuizData, setQuizData] = useState();
+	const [currentQuestionIndex, setQuestionIndex] = useState(0);
 
 	useEffect(() => {
-		setInterval(() => {
-			changeProgress();
-		}, 100);
-		return () => clearInterval();
+		async function setDataState() {
+			let data = await services.getQuiz();
+			setQuizData(Object.entries(data));
+		}
+		setDataState();
 	}, []);
-
-	function changeProgress() {
-		setTimerCountValue((prev) => {
-			if (prev <= -730) {
-				return 0;
-			}
-			return Number(prev) - 1;
-		});
-	}
 
 	return (
 		<div className={styles.wrapper}>
@@ -38,41 +34,73 @@ export default function Home() {
 			</header>
 
 			<main className={styles.main}>
-				<div className={styles.quizContainer}>
-					<div
-						style={{
-							boxShadow: `inset ${timerCountValue}px 0 0 0 #fefefe`
-						}}
-						className={styles.quizTimeLine}></div>
-					<div className={styles.quizTitle}>
-						WHICH IS THE MISSING LINE?
-					</div>
-					<div className={styles.quizQuestionContainer}>
-						<pre class="prettyprint">
-							function hello() &#123; const item =
-							document.querySelector(".item");&#125;
-						</pre>
-					</div>
+				<motion.div
+					animate={{
+						y: -70,
+						opacity: 1
+					}}
+					initial={{ opacity: 0.5, y: 50 }}
+					transition={{
+						type: "spring",
+						stiffness: 170
+					}}
+					className={styles.quizContainer}>
+					<Timer></Timer>
+					{getQuizData ? (
+						<motion.div
+							className={styles.innerContainer}
+							style={{ maxHeight: getSlideUpValue }}
+							animate={{
+								y: -15
+							}}
+							transition={{
+								type: "spring",
+								stiffness: 100,
+								delay: 0
+							}}
+							initial={{ y: 60 }}>
+							<div className={styles.quizTitle}>
+								{getQuizData
+									? getQuizData[currentQuestionIndex][1]
+											.question
+									: ""}
+							</div>
 
-					<div className={styles.quizAnswers}>
-						<div className={styles.answer}>
-							<div>
-								<span>A</span>
+							{getQuizData[2][1]?.codeQuestion ? (
+								<div className={styles.quizQuestionContainer}>
+									<pre class="prettyprint lang-javascript inenums:4">
+										{getQuizData[2][1].codeQuestion}
+									</pre>
+								</div>
+							) : null}
+
+							<div className={styles.quizAnswers}>
+								<div
+									className={styles.answer}
+									onClick={(e) => {
+										setSlideUpValue("0");
+									}}>
+									<div>
+										<span>A</span>
+									</div>
+									<pre class="prettyprint">
+										const item =
+										document.querySelector(".item");
+									</pre>
+								</div>
+								<div className={styles.answer}>
+									<div>
+										<span>B</span>
+									</div>
+									<pre class="prettyprint linenums">
+										const item
+										=document.querySelector(".item");
+									</pre>
+								</div>
 							</div>
-							<pre class="prettyprint linenums">
-								const item =document.querySelector(".item");
-							</pre>
-						</div>
-						<div className={styles.answer}>
-							<div>
-								<span>B</span>
-							</div>
-							<pre class="prettyprint linenums">
-								const item =document.querySelector(".item");
-							</pre>
-						</div>
-					</div>
-				</div>
+						</motion.div>
+					) : null}
+				</motion.div>
 			</main>
 		</div>
 	);
