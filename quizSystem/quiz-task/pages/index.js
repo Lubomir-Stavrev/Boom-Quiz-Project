@@ -3,20 +3,50 @@ import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import services from "../utils/services.js";
 import Timer from "./timer.js";
+import prettier from "prettier/standalone";
+import babylon from "prettier/parser-babel";
 
 export default function Home() {
-	const [getSlideUpValue, setSlideUpValue] = useState("350");
+	const [getSlideUpValue, setSlideUpValue] = useState("650");
 	const [getQuizData, setQuizData] = useState();
 	const [currentQuestionIndex, setQuestionIndex] = useState(0);
+	const [currentPoints, setPoints] = useState(0);
 
 	useEffect(() => {
 		async function setDataState() {
 			let data = await services.getQuiz();
 			setQuizData(Object.entries(data));
+			console.log(Object.entries(data));
 		}
 		setDataState();
 	}, []);
 
+	function answerTheQuestion(e) {
+		let answer = e.target.getAttribute("data-Index");
+		if (!answer) {
+			answer = e.target.parentNode.getAttribute("data-Index");
+		}
+		if (answer === getQuizData[currentQuestionIndex][1].rightAnswer) {
+			setPoints((prev) => {
+				return prev + 1;
+			});
+		}
+		setSlideUpValue("0");
+		setTimeout(() => {
+			setQuestionIndex((prev) => {
+				setTimeout(() => {
+					setSlideUpValue("650px");
+				}, 500);
+				return prev + 1;
+			});
+		}, 500);
+	}
+
+	function handleTimeLeft(e) {
+		setQuestionIndex((prev) => {
+			return prev + 1;
+		});
+	}
 	return (
 		<div className={styles.wrapper}>
 			<header>
@@ -45,61 +75,72 @@ export default function Home() {
 						stiffness: 170
 					}}
 					className={styles.quizContainer}>
-					<Timer></Timer>
-					{getQuizData ? (
-						<motion.div
-							className={styles.innerContainer}
-							style={{ maxHeight: getSlideUpValue }}
-							animate={{
-								y: -15
-							}}
-							transition={{
-								type: "spring",
-								stiffness: 100,
-								delay: 0
-							}}
-							initial={{ y: 60 }}>
-							<div className={styles.quizTitle}>
-								{getQuizData
-									? getQuizData[currentQuestionIndex][1]
-											.question
-									: ""}
-							</div>
+					<Timer
+						onTimeLeft={(e) => handleTimeLeft(e)}
+						props={currentQuestionIndex}></Timer>
 
-							{getQuizData[2][1]?.codeQuestion ? (
+					<motion.div
+						className={styles.innerContainer}
+						style={{ maxHeight: getSlideUpValue }}
+						animate={{
+							y: -15
+						}}
+						transition={{
+							type: "spring",
+							stiffness: 100,
+							delay: 0
+						}}
+						initial={{ y: 60 }}>
+						<div className={styles.quizTitle}>
+							{getQuizData
+								? getQuizData[currentQuestionIndex][1].Question
+								: ""}
+						</div>
+
+						{getQuizData ? (
+							getQuizData[currentQuestionIndex][1]
+								?.codeQuestion ? (
 								<div className={styles.quizQuestionContainer}>
-									<pre class="prettyprint lang-javascript inenums:4">
-										{getQuizData[2][1].codeQuestion}
+									<pre className="prettyprint">
+										<code>
+											{
+												getQuizData[
+													currentQuestionIndex
+												][1]?.codeQuestion
+											}
+										</code>
 									</pre>
 								</div>
-							) : null}
-
-							<div className={styles.quizAnswers}>
-								<div
-									className={styles.answer}
-									onClick={(e) => {
-										setSlideUpValue("0");
-									}}>
-									<div>
-										<span>A</span>
-									</div>
-									<pre class="prettyprint">
-										const item =
-										document.querySelector(".item");
-									</pre>
-								</div>
-								<div className={styles.answer}>
-									<div>
-										<span>B</span>
-									</div>
-									<pre class="prettyprint linenums">
-										const item
-										=document.querySelector(".item");
-									</pre>
-								</div>
-							</div>
-						</motion.div>
-					) : null}
+							) : null
+						) : null}
+						<div className={styles.quizAnswers}>
+							{getQuizData
+								? Object.entries(
+										getQuizData[currentQuestionIndex][1]
+											.answers
+								  ).map((el) => {
+										return (
+											<div
+												key={el[0]}
+												data-Index={el[0]}
+												className={styles.answer}
+												onClick={(e) =>
+													answerTheQuestion(e)
+												}>
+												<div data-Index={el[0]}>
+													<span>{el[0]}</span>
+												</div>
+												<pre
+													data-Index={el[0]}
+													className="prettyprint">
+													{el[1]}
+												</pre>
+											</div>
+										);
+								  })
+								: null}
+						</div>
+					</motion.div>
 				</motion.div>
 			</main>
 		</div>

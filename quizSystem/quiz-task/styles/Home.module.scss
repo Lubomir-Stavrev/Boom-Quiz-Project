@@ -18,12 +18,13 @@
 
 .quizContainer {
     width: 730px;
-    height: 350px;
+    min-height: 350px;
+    height: auto;
     background-color: #fefefe;
     box-shadow: 0px 1px 4px #fefefe;
     .innerContainer {
         overflow-y: hidden;
-        max-height: 350px;
+        max-height: 650px;
         transition-property: initial;
         transition-duration: .5s;
         transition-timing-function: cubic-bezier(0, 0.1, 0.6, 0.2);
@@ -65,6 +66,7 @@
                 -moz-transition: ease-out 0.4s;
                 -ms-transition: ease-out 0.4s;
                 -o-transition: ease-out 0.4s;
+                margin-right: 10px;
             }
             div span {
                 color: white;
@@ -86,4 +88,13 @@
             }
         }
     }
+}
+
+.resultContainer {
+    text-align: center;
+    width: 730px;
+    min-height: 350px;
+    height: auto;
+    background-color: #fefefe;
+    box-shadow: 0px 1px 4px #fefefe;
 }
