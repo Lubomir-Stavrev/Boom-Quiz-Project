@@ -24,7 +24,7 @@
     box-shadow: 0px 1px 4px #fefefe;
     .innerContainer {
         overflow-y: hidden;
-        max-height: 650px;
+        max-height: 520px;
         transition-property: initial;
         transition-duration: .5s;
         transition-timing-function: cubic-bezier(0, 0.1, 0.6, 0.2);
@@ -39,16 +39,16 @@
         -o-transition: 0.1s;
     }
     .quizTitle {
-        font-size: 2.5rem;
+        font-size: 1.6rem;
         font-weight: 1000;
-        padding: 3rem 2rem 1rem;
+        padding: 2rem 2.4rem 0.9rem;
         cursor: default;
     }
     .quizQuestionContainer {
         margin-left: 42px;
     }
     .quizAnswers {
-        margin-top: 30px;
+        margin-top: 28px;
         .answer {
             box-shadow: 0px 7px 15px #eaeaeb;
             transition: ease-out 0.3s;
@@ -58,7 +58,7 @@
             display: flex;
             div {
                 background-color: #0c4bfa;
-                padding: 5px 15px;
+                padding: 3px 10px;
                 font-weight: 1000;
                 box-shadow: inset 0px 0 0 0px #eaeaeb;
                 transition: ease-out 0.4s;
@@ -70,7 +70,7 @@
             }
             div span {
                 color: white;
-                font-size: 3rem;
+                font-size: 2.4rem;
             }
         }
         .answer:hover {
