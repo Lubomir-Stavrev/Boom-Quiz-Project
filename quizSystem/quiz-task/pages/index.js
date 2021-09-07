@@ -1,5 +1,6 @@
 import styles from "../styles/Home.module.scss";
 import { useState, useEffect, Router } from "react";
+import Head from "next/head";
 import { motion } from "framer-motion";
 import services from "../utils/services.js";
 import Timer from "./timer.js";
@@ -9,7 +10,7 @@ import "prismjs/components/prism-json";
 import { useRouter } from "next/router";
 
 export default function Home() {
-	const [getSlideUpValue, setSlideUpValue] = useState("550");
+	const [getSlideUpValue, setSlideUpValue] = useState("150");
 	const [getQuizData, setQuizData] = useState();
 	const [currentQuestionIndex, setQuestionIndex] = useState(0);
 	const [currentPoints, setPoints] = useState(0);
@@ -61,8 +62,6 @@ export default function Home() {
 	}
 
 	function handleTimeLeft(e) {
-		console.log(currentQuestionIndex);
-		console.log(getQuizData?.length);
 		setQuestionIndex((prev) => {
 			if (prev + 1 >= getQuizData?.length) {
 				setPoints((prevPoint) => {
@@ -90,7 +89,7 @@ export default function Home() {
 					<main className={styles.main}>
 						<motion.div
 							animate={{
-								y: -70,
+								y: -60,
 								opacity: 1
 							}}
 							initial={{ opacity: 0.5, y: 50 }}
@@ -125,11 +124,15 @@ export default function Home() {
 									getQuizData[currentQuestionIndex][1]
 										?.codeQuestion ? (
 										<div
+											style={{
+												width: "80%",
+												overflowX: "scroll"
+											}}
 											className={
 												styles.quizQuestionContainer
 											}>
 											<pre>
-												<code class="language-javascript">
+												<code className="language-javascript">
 													{
 														getQuizData[
 															currentQuestionIndex
@@ -161,14 +164,20 @@ export default function Home() {
 														<div data-index={el[0]}>
 															<span>{el[0]}</span>
 														</div>
+
 														{getQuizData[
 															currentQuestionIndex
 														][1]?.type == "code" ? (
 															<pre
+																style={{
+																	overflowX:
+																		"scroll",
+																	width: "90%"
+																}}
 																data-index={
 																	el[0]
 																}>
-																<code class="language-javascript">
+																<code className="language-javascript">
 																	{el[1]}
 																</code>
 															</pre>

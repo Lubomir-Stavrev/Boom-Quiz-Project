@@ -1,196 +1,249 @@
-.wrapper {
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    background-color: #0c4bfa;
-}
-
-.main {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-
-.quizContainer {
-    width: 730px;
-    min-height: 350px;
-    height: auto;
-    background-color: #fefefe;
-    box-shadow: 0px 1px 4px #fefefe;
-    .innerContainer {
-        overflow-y: hidden;
-        max-height: 520px;
-        transition-property: initial;
-        transition-duration: .5s;
-        transition-timing-function: cubic-bezier(0, 0.1, 0.6, 0.2);
-    }
-    .quizTimeLine {
-        background-color: #dc154a;
-        transition: 0.1s;
-        height: 10px;
-        -webkit-transition: 0.1s;
-        -moz-transition: 0.1s;
-        -ms-transition: 0.1s;
-        -o-transition: 0.1s;
-    }
-    .quizTitle {
-        font-size: 1.6rem;
-        font-weight: 1000;
-        padding: 2rem 2.4rem 0.9rem;
-        cursor: default;
-    }
-    .quizQuestionContainer {
-        margin-left: 42px;
-    }
-    .quizAnswers {
-        margin-top: 28px;
-        .answer {
-            box-shadow: 0px 7px 15px #eaeaeb;
-            transition: ease-out 0.3s;
-            margin-left: 45px;
-            margin-right: 50px;
-            margin-bottom: 10px;
-            display: flex;
-            div {
-                background-color: #0c4bfa;
-                padding: 3px 10px;
-                font-weight: 1000;
-                box-shadow: inset 0px 0 0 0px #eaeaeb;
-                transition: ease-out 0.4s;
-                -webkit-transition: ease-out 0.4s;
-                -moz-transition: ease-out 0.4s;
-                -ms-transition: ease-out 0.4s;
-                -o-transition: ease-out 0.4s;
-                margin-right: 10px;
-            }
-            div span {
-                color: white;
-                font-size: 2.4rem;
-            }
-        }
-        .answer:hover {
-            cursor: pointer;
-            box-shadow: 0px 0px 10px #CDD0CB;
-            div {
-                box-shadow: inset -56px 0 0 0 #FFD56B;
-            }
-        }
-        .answer:active {
-            cursor: pointer;
-            box-shadow: 0px 0px 10px grey;
-            div {
-                box-shadow: inset -56px 0 0 0 grey;
-            }
-        }
-    }
-}
-
-.resultContainer {
-    text-align: center;
-    width: 730px;
-    min-height: 350px;
-    height: auto;
-    background-color: #fefefe;
-    box-shadow: 0px 0 3px 1px #eaeaeb;
-    // Inspired by https://dribbble.com/shots/8582990-VR-Menu-Interaction
-    main {
+    @import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@1,300&display=swap');
+    @import url('https://fonts.googleapis.com/css?family=Lato:100&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300&display=swap');
+    .wrapper {
         display: flex;
         flex-direction: column;
-        transform: rotatex(10deg);
-        animation: rotateAngle 6s linear infinite;
-    }
-    button {
-        display: block;
-        position: relative;
-        margin: 0 auto;
-        margin-top: 2rem;
-        cursor: pointer;
-        background: #FFFFFF;
-        border: none;
-        border-radius: .4em;
-        text-transform: uppercase;
-        font-size: 1.4em;
-        font-weight: 500;
-        letter-spacing: 0.04em;
-        perspective: 300px;
-        transform-style: preserve-3d;
-        width: 200px;
-        text-align: center;
         justify-content: center;
-        &:before,
-        &:after {
-            --z: 0px;
+        align-items: center;
+        height: 100vh;
+        background-color: #0c4bfa;
+    }
+    
+    .main {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    .quizContainer {
+        width: 57vw;
+        min-height: 150px;
+        height: auto;
+        background-color: #fefefe;
+        box-shadow: 0px 1px 4px #fefefe;
+        .innerContainer {
+            overflow-y: hidden;
+            max-height: 520px;
+            transition-property: initial;
+            transition-duration: .5s;
+            transition-timing-function: cubic-bezier(0, 0.1, 0.6, 0.2);
+        }
+        .quizTimeLine {
+            background-color: #dc154a;
+            transition: 0.1s;
+            height: 10px;
+            -webkit-transition: 0.1s;
+            -moz-transition: 0.1s;
+            -ms-transition: 0.1s;
+            -o-transition: 0.1s;
+        }
+        .quizTitle {
+            font-size: 1.6rem;
+            font-weight: 1000;
+            padding: 2rem 2.4rem 0.9rem;
+            cursor: default;
+        }
+        .quizQuestionContainer {
+            margin-left: 42px;
+        }
+        .quizAnswers {
+            margin-top: 28px;
+            .answer {
+                box-shadow: 0px 7px 15px #eaeaeb;
+                transition: ease-out 0.3s;
+                margin-left: 45px;
+                margin-right: 50px;
+                margin-bottom: 10px;
+                display: flex;
+                div {
+                    background-color: #0c4bfa;
+                    padding: 3px 10px;
+                    font-weight: 1000;
+                    box-shadow: inset 0px 0 0 0px #eaeaeb;
+                    transition: ease-out 0.4s;
+                    -webkit-transition: ease-out 0.4s;
+                    -moz-transition: ease-out 0.4s;
+                    -ms-transition: ease-out 0.4s;
+                    -o-transition: ease-out 0.4s;
+                    margin-right: 10px;
+                }
+                div span {
+                    color: white;
+                    font-size: 2.4rem;
+                }
+            }
+            .answer:hover {
+                cursor: pointer;
+                box-shadow: 0px 0px 10px #CDD0CB;
+                div {
+                    box-shadow: inset -56px 0 0 0 #FFD56B;
+                }
+            }
+            .answer:active {
+                cursor: pointer;
+                box-shadow: 0px 0px 10px grey;
+                div {
+                    box-shadow: inset -56px 0 0 0 grey;
+                }
+            }
+        }
+    }
+    
+    .resultContainer {
+        text-align: center;
+        width: 50vw;
+        min-height: 350px;
+        height: auto;
+        background-color: #fefefe;
+        box-shadow: 0px 0 3px 1px #eaeaeb;
+        // Inspired by https://dribbble.com/shots/8582990-VR-Menu-Interaction
+        .scoreContainer {
+            display: flex !important;
+            text-align: center;
+            justify-content: center;
+            margin-top: 35px;
+        }
+        .scoreContainer h1 {
+            margin-right: 25px;
+            color: #4F95DA;
+            font-family: 'Josefin Sans', sans-serif;
+            font-weight: 300 !important;
+            font-size: 3.5rem;
+        }
+        .score {
+            display: flex;
+            flex-direction: column;
+            transform: rotatex(10deg);
+            animation: rotateAngle 6s linear infinite;
+        }
+        .container {
+            display: flex;
+            margin-top: 40px;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            justify-content: center;
+            text-align: center;
+        }
+        .center {
+            width: 180px;
+            height: 60px;
             position: absolute;
-            top: 0;
+        }
+        .btn {
+            width: 180px;
+            height: 60px;
+            cursor: pointer;
+            background: transparent;
+            border: 1px solid #91C9FF;
+            outline: none;
+            transition: 1s ease-in-out;
+        }
+        svg {
+            position: absolute;
             left: 0;
-            display: block;
-            content: '';
-            width: 0%;
-            height: 100%;
-            opacity: 0;
-            mix-blend-mode: inherit;
-            border-radius: inherit;
-            transform-style: preserve-3d;
-            transform: translate3d( calc(var(--z) * 0px), calc(var(--z) * 0px), calc(var(--z) * 0px));
+            top: 0;
+            fill: none;
+            stroke: #0c4bfa;
+            stroke-dasharray: 150 480;
+            stroke-dashoffset: 150;
+            transition: 1s ease-in-out;
         }
-        span {
-            mix-blend-mode: none;
-            display: block;
+        .btn:hover {
+            transition: 1s ease-in-out;
+            background: #4F95DA;
+            span {
+                color: #ffff;
+            }
         }
-        &:after {
-            background-color: #0c4bfa;
+        .btn:hover svg {
+            stroke-dashoffset: -480;
         }
-        &:before {
-            background-color: #0c4bfa;
+        .btn span {
+            color: #4F95DA;
+            font-size: 20px;
+            font-weight: 100;
         }
-        &:hover {
-            background-color: #FFFFFF;
-            box-shadow: 0 0 10px 10px #dc154a;
-            transition: background .3s 0.1s;
-            -webkit-transition: background .3s 0.1s;
-            -moz-transition: background .3s 0.1s;
-            -ms-transition: background .3s 0.1s;
-            -o-transition: background .3s 0.1s;
-        }
-        &:hover:before {
-            --z: 0.04;
-            animation: translateWobble 2.2s ease forwards;
-        }
-        &:hover:after {
-            --z: -0.06;
-            animation: translateWobble 2.2s ease forwards;
+        @keyframes rotateAngle {
+            0% {
+                transform: rotateY(0deg) rotateX(10deg);
+                animation-timing-function: cubic-bezier(0.61, 1, 0.88, 1);
+            }
+            25% {
+                transform: rotateY(40deg) rotateX(20deg);
+                -webkit-transform: rotateY(40deg) rotateX(20deg);
+                -moz-transform: rotateY(40deg) rotateX(20deg);
+                -ms-transform: rotateY(40deg) rotateX(20deg);
+                -o-transform: rotateY(40deg) rotateX(20deg);
+            }
+            50% {
+                transform: rotateY(0deg) rotateX(10deg);
+                animation-timing-function: cubic-bezier(0.61, 1, 0.88, 1);
+                -webkit-transform: rotateY(0deg) rotateX(10deg);
+                -moz-transform: rotateY(0deg) rotateX(10deg);
+                -ms-transform: rotateY(0deg) rotateX(10deg);
+                -o-transform: rotateY(0deg) rotateX(10deg);
+            }
+            75% {
+                transform: rotateY(-40deg) rotateX(20deg);
+                -webkit-transform: rotateY(-40deg) rotateX(20deg);
+                -moz-transform: rotateY(-40deg) rotateX(20deg);
+                -ms-transform: rotateY(-40deg) rotateX(20deg);
+                -o-transform: rotateY(-40deg) rotateX(20deg);
+            }
+            100% {
+                transform: rotateY(0deg) rotateX(20deg);
+                -webkit-transform: rotateY(0deg) rotateX(20deg);
+                -moz-transform: rotateY(0deg) rotateX(20deg);
+                -ms-transform: rotateY(0deg) rotateX(20deg);
+                -o-transform: rotateY(0deg) rotateX(20deg);
+            }
         }
     }
-    @keyframes rotateAngle {
-        0% {
-            transform: rotateY(0deg) rotateX(10deg);
-            animation-timing-function: cubic-bezier(0.61, 1, 0.88, 1);
+    
+    .resultContainer h2 {
+        font-size: 1.8rem;
+    }
+    
+    .resultContainer h1 {
+        font-size: 2.5rem;
+    }
+    
+    @media only screen and (max-width: 600px) {
+        .quizContainer {
+            width: 95vw;
+            min-height: 150px;
+            height: auto;
         }
-        25% {
-            transform: rotateY(20deg) rotateX(10deg);
+        .quizTitle {
+            font-size: 1.1rem !important;
         }
-        50% {
-            transform: rotateY(0deg) rotateX(10deg);
-            animation-timing-function: cubic-bezier(0.61, 1, 0.88, 1);
+        .quizQuestionContainer {
+            margin-left: 42px;
         }
-        75% {
-            transform: rotateY(-20deg) rotateX(10deg);
-        }
-        100% {
-            transform: rotateY(0deg) rotateX(10deg);
+        .quizAnswers {
+            .answer {
+                div span {
+                    font-size: 1.5rem !important;
+                }
+                div h4 {
+                    font-size: 1.1rem !important;
+                }
+            }
         }
     }
-}
-
-.resultContainer h2 {
-    font-size: 1.8rem;
-}
-
-.resultContainer h1 {
-    font-size: 2.5rem;
-}
+    
+    @media only screen and (max-width: 850px) {
+        .resultContainer {
+            width: 90vw;
+            .scoreContainer {
+                margin-top: 45px;
+            }
+            .scoreContainer h1 {
+                font-size: 3rem;
+            }
+        }
+    }
