@@ -9,11 +9,11 @@ So the assignment was to develop a good-looking quiz interface that is able, sup
 should be able to answer a question and seamlessly go to the next question with a slide-up animation. A red progress bar should indicate the 
 time left for a single question. If the user isn’t able to answer a question on time, the quiz should proceed with the next question.
 
-##Technology stack
+## Technology stack
 * Javascript, React and Next.js
 * CSS and SAASS
 
-##The requirements and bonuses that I did
+## The requirements and bonuses that I did
 * The code for the web application should be managed in a version control system, more specifically Git.
 * The user interface must most closely resemble the preview, given in this document.
 * The web application should be created with Next.js.
